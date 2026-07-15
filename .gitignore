@@ -1,0 +1,19 @@
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# PowerShell
+*.psd1.bak
+*.psm1.bak
+
+# Environment
+.env
