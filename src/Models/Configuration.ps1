@@ -11,6 +11,20 @@ function New-Configuration {
     param()
 
     return [PSCustomObject]@{
+        SchemaVersion = ""
 
+        Settings = [PSCustomObject]@{
+            Execution = [PSCustomObject]@{
+                DryRun = $false
+                Verbose = $false
+            }
+
+            Installation = [PSCustomObject]@{
+                BackupExistingFiles = $true
+                OverwriteExistingFiles = $false
+            }
+        }
+
+        Profiles = @()
     }
 }
