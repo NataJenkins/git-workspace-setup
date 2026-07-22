@@ -5,6 +5,7 @@ Creates a new profile object.
 .DESCRIPTION
 Returns an empty profile model used throughout the application.
 #>
+Set-StrictMode -Version Latest
 
 function New-Profile {
     [CmdletBinding()]

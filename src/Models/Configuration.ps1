@@ -6,6 +6,8 @@ Creates a new configuration object.
 Returns an empty configuration model used throughout the application.
 #>
 
+
+Set-StrictMode -Version Latest
 function New-Configuration {
     [CmdletBinding()]
     param()
