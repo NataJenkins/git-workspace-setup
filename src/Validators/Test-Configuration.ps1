@@ -23,4 +23,8 @@ function Test-Configuration {
     if ($Configuration.Profiles.Count -eq 0) {
         throw "Configuration must contain at least one profile."
     }
+
+    foreach ($profile in $Configuration.Profiles) {
+        Test-Profile -Profile $profile
+    }
 }
