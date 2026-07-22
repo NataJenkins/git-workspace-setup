@@ -36,8 +36,14 @@ function Get-Configuration {
         $profile.Name = $profileData.name
         $profile.Description = $profileData.description
 
-        $profile.Workspaces = $profileData.workspaces
+        foreach ($workspacePath in $profileData.workspaces) {
 
+            $workspace = New-Workspace
+
+            $workspace.Path = $workspacePath
+
+            $profile.Workspaces += $workspace
+        }
         $profile.Git.UserName = $profileData.git.userName
         $profile.Git.Email = $profileData.git.email
         $profile.Git.DefaultBranch = $profileData.git.defaultBranch
