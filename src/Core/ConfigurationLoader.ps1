@@ -53,5 +53,7 @@ function Get-Configuration {
         $configuration.Profiles += $profile
     }
 
+    Test-Configuration -Configuration $configuration
+
     return $configuration
 }
