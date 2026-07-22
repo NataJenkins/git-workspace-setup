@@ -23,4 +23,8 @@ function Test-Profile {
     if ($Profile.Workspaces.Count -eq 0) {
         throw "Configuration validation failed: Profile must define at least one workspace."
     }
+
+    foreach ($workspace in $Profile.Workspaces) {
+        Test-Workspace -Workspace $workspace
+    }
 }
