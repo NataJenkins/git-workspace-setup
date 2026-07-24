@@ -21,6 +21,8 @@ cd C:\Users\NataJ\Documents\GitHub\personal\git-workspace-setup
 
 . .\src\Services\FileService.ps1
 . .\src\Services\JsonService.ps1
+. .\src\Services\ProfileService.ps1
+. .\src\Services\WorkspaceService.ps1
 
 . .\src\Validators\Test-Workspace.ps1
 . .\src\Validators\Test-Profile.ps1
