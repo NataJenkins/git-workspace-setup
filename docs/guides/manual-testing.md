@@ -15,19 +15,26 @@ cd C:\Users\NataJ\Documents\GitHub\personal\git-workspace-setup
 ## Load project modules
 
 ```powershell
+# Models
 . .\src\Models\Configuration.ps1
 . .\src\Models\Profile.ps1
 . .\src\Models\Workspace.ps1
 
+# Services
 . .\src\Services\FileService.ps1
 . .\src\Services\JsonService.ps1
 . .\src\Services\ProfileService.ps1
 . .\src\Services\WorkspaceService.ps1
 
+# Validators
 . .\src\Validators\Test-Workspace.ps1
 . .\src\Validators\Test-Profile.ps1
 . .\src\Validators\Test-Configuration.ps1
 
+# Bootstrappers
+. .\src\Bootstrappers\GitBootstrapper.ps1
+
+# Core
 . .\src\Core\ConfigurationLoader.ps1
 ```
 
