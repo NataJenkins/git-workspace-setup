@@ -11,6 +11,8 @@ function Get-TemplateContent {
         [Parameter(Mandatory)]
         [string]$Path
     )
+
+    return Get-FileContent -Path $Path
 }
 
 function Resolve-Template {
