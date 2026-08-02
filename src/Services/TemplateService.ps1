@@ -43,5 +43,25 @@ function Resolve-Template {
         )
     }
 
+    $unresolvedVariables = [regex]::Matches(
+        $result,
+        "{{(.*?)}}"
+    )
+
+    if ($unresolvedVariables.Count -gt 0) {
+        $missingVariables = $unresolvedVariables |
+        ForEach-Object { $_.Groups[1].Value } |
+        Sort-Object -Unique
+
+        throw @"
+Failed to resolve template.
+
+Missing variables:
+- $($missingVariables -join "`n- ")
+"@
+    }
+
+
+
     return $result
 }
