@@ -15,6 +15,12 @@ function Get-TemplateContent {
     return Get-FileContent -Path $Path
 }
 
+
+<#
+.SYNOPSIS
+Resolves template variables.
+#>
+
 function Resolve-Template {
     [CmdletBinding()]
     param(
@@ -24,4 +30,18 @@ function Resolve-Template {
         [Parameter(Mandatory)]
         [hashtable]$Variables
     )
+
+    $result = $Template
+
+    foreach ($variableName in $Variables.Keys) {
+
+        $placeholder = "{{{{{0}}}}}" -f $variableName
+
+        $result = $result.Replace(
+            $placeholder,
+            [string]$Variables[$variableName]
+        )
+    }
+
+    return $result
 }
