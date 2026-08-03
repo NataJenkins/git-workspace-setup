@@ -16,9 +16,16 @@ function Install-GitConfiguration {
 
     Write-Verbose "Installing Git configuration..."
 
-    Write-Host "Git configuration"
-    Write-Host "-----------------"
-    Write-Host "User Name      : $($Profile.Git.UserName)"
-    Write-Host "Email          : $($Profile.Git.Email)"
-    Write-Host "Default Branch : $($Profile.Git.DefaultBranch)"
+    $template = Get-TemplateContent `
+        -Path ".\templates\gitconfig.template"
+
+    $content = Resolve-Template `
+        -Template $template `
+        -Variables @{
+        UserName      = $Profile.Git.UserName
+        Email         = $Profile.Git.Email
+        DefaultBranch = $Profile.Git.DefaultBranch
+    }
+
+    Write-Host $content
 }
