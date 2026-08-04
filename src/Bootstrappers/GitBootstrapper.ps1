@@ -27,5 +27,9 @@ function Install-GitConfiguration {
         DefaultBranch = $Profile.Git.DefaultBranch
     }
 
-    Write-Host $content
+    $outputPath = ".\output\gitconfig"
+
+    Set-FileContent `
+        -Path $outputPath `
+        -Content $content
 }
