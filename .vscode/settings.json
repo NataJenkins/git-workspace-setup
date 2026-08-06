@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+
+  "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell"
+  },
+
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
+}
