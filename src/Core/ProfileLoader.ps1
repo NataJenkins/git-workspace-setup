@@ -1,3 +1,10 @@
+# src\Core\ProfileLoader.ps1
+<#
+.SYNOPSIS
+Loads profiles from configuration files.
+#>
+
+Set-StrictMode -Version Latest
 function Get-ProfileFromConfiguration {
     [CmdletBinding()]
     param(
