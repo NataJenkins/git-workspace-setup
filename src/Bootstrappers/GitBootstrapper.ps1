@@ -9,7 +9,10 @@ function Install-GitConfiguration {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [PSCustomObject]$Profile
+        [PSCustomObject]$Profile,
+
+        [Parameter(Mandatory)]
+        [string]$OutputPath
     )
 
     Test-Profile -Profile $Profile
@@ -27,7 +30,9 @@ function Install-GitConfiguration {
         DefaultBranch = $Profile.Git.DefaultBranch
     }
 
-    $outputPath = ".\output\gitconfig"
+    Set-FileContent `
+        -Path $OutputPath `
+        -Content $content
 
     Set-FileContent `
         -Path $outputPath `
