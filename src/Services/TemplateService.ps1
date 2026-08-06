@@ -1,5 +1,3 @@
-# src\Services\TemplateService.ps1
-
 <#
 .SYNOPSIS
 Reads template files and resolves template variables.

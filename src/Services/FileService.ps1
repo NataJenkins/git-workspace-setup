@@ -1,5 +1,3 @@
-#src\Services\FileService.ps1
-
 <#
 .SYNOPSIS
 Reads the contents of a file.
@@ -17,35 +15,4 @@ function Get-FileContent {
     )
 
     return Get-Content -Path $Path -Raw
-}
-
-
-function Set-FileContent {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory)]
-        [string]$Path,
-
-        [Parameter(Mandatory)]
-        [string]$Content
-    )
-
-    $directory = Split-Path `
-        -Path $Path `
-        -Parent
-
-    if (
-        -not [string]::IsNullOrWhiteSpace($directory) -and
-        -not (Test-Path $directory)
-    ) {
-        New-Item `
-            -ItemType Directory `
-            -Path $directory `
-            -ErrorAction Stop | Out-Null
-    }
-
-    Set-Content `
-        -Path $Path `
-        -Value $Content `
-        -ErrorAction Stop
 }
