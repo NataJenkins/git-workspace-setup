@@ -21,7 +21,6 @@ The project is designed to be:
 - Safe by default
 - Configuration-driven
 - Open Source friendly
-- Configuration-driven installation
 
 ---
 
@@ -33,38 +32,6 @@ The project is designed to be:
 - Global Git Hooks
 - Interactive setup wizard
 - JSON configuration support
-
----
-
-## Configuration
-
-Git Workspace Setup is configuration-driven.
-
-Project settings are defined in a JSON configuration file that acts as the single source of truth for the application.
-
-The configuration system is responsible for:
-
-- Loading the configuration from disk.
-- Applying default values for optional settings.
-- Validating the configuration structure.
-- Exposing a strongly typed configuration object to the rest of the application.
-
-Example configuration:
-
-```json
-{
-  "schemaVersion": "1.0",
-  "profiles": [
-    {
-      "name": "Personal"
-    }
-  ]
-}
-```
-
-A complete configuration example is available at:
-
-- `examples/config.sample.json`
 
 ---
 

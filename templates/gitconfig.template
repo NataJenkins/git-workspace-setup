@@ -1,6 +1,0 @@
-[user]
-    name = {{UserName}}
-    email = {{Email}}
-
-[init]
-    defaultBranch = {{DefaultBranch}}

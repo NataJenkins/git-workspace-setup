@@ -9,32 +9,16 @@ function Install-GitConfiguration {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [PSCustomObject]$Profile,
-
-        [Parameter(Mandatory)]
-        [string]$OutputPath
+        [PSCustomObject]$Profile
     )
 
     Test-Profile -Profile $Profile
 
     Write-Verbose "Installing Git configuration..."
 
-    $template = Get-TemplateContent `
-        -Path ".\templates\gitconfig.template"
-
-    $content = Resolve-Template `
-        -Template $template `
-        -Variables @{
-        UserName      = $Profile.Git.UserName
-        Email         = $Profile.Git.Email
-        DefaultBranch = $Profile.Git.DefaultBranch
-    }
-
-    Set-FileContent `
-        -Path $OutputPath `
-        -Content $content
-
-    Set-FileContent `
-        -Path $outputPath `
-        -Content $content
+    Write-Host "Git configuration"
+    Write-Host "-----------------"
+    Write-Host "User Name      : $($Profile.Git.UserName)"
+    Write-Host "Email          : $($Profile.Git.Email)"
+    Write-Host "Default Branch : $($Profile.Git.DefaultBranch)"
 }

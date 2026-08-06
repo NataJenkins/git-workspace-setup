@@ -19,9 +19,6 @@ function Get-Configuration {
 
     $jsonConfiguration = ConvertFrom-JsonString -Json $json
 
-    $jsonConfiguration = Resolve-Configuration `
-        -ConfigurationData $jsonConfiguration
-
     $configuration = New-Configuration
 
     $configuration.SchemaVersion = $jsonConfiguration.schemaVersion
@@ -32,38 +29,34 @@ function Get-Configuration {
     $configuration.Settings.Installation.BackupExistingFiles = $jsonConfiguration.settings.installation.backupExistingFiles
     $configuration.Settings.Installation.OverwriteExistingFiles = $jsonConfiguration.settings.installation.overwriteExistingFiles
 
-    if ($jsonConfiguration.PSObject.Properties["profiles"]) {
+    foreach ($profileData in $jsonConfiguration.profiles) {
 
-        foreach ($profileData in $jsonConfiguration.profiles) {
+        $profile = New-Profile
 
-            $profile = New-Profile
+        $profile.Name = $profileData.name
+        $profile.Description = $profileData.description
 
-            $profile.Name = $profileData.name
-            $profile.Description = $profileData.description
+        foreach ($workspacePath in $profileData.workspaces) {
 
-            foreach ($workspacePath in $profileData.workspaces) {
+            $workspace = New-Workspace
 
-                $workspace = New-Workspace
+            $workspace.Path = $workspacePath
 
-                $workspace.Path = $workspacePath
-
-                $profile.Workspaces += $workspace
-            }
-
-            $profile.Git.UserName = $profileData.git.userName
-            $profile.Git.Email = $profileData.git.email
-            $profile.Git.DefaultBranch = $profileData.git.defaultBranch
-
-            $profile.SSH.Host = $profileData.ssh.host
-            $profile.SSH.KeyFile = $profileData.ssh.keyFile
-
-            $profile.Hooks.Enabled = $profileData.hooks.enabled
-
-            $profile.VSCode.Profile = $profileData.vscode.profile
-            $profile.VSCode.Extensions = $profileData.vscode.extensions
-
-            $configuration.Profiles += $profile
+            $profile.Workspaces += $workspace
         }
+        $profile.Git.UserName = $profileData.git.userName
+        $profile.Git.Email = $profileData.git.email
+        $profile.Git.DefaultBranch = $profileData.git.defaultBranch
+
+        $profile.SSH.Host = $profileData.ssh.host
+        $profile.SSH.KeyFile = $profileData.ssh.keyFile
+
+        $profile.Hooks.Enabled = $profileData.hooks.enabled
+
+        $profile.VSCode.Profile = $profileData.vscode.profile
+        $profile.VSCode.Extensions = $profileData.vscode.extensions
+
+        $configuration.Profiles += $profile
     }
 
     Test-Configuration -Configuration $configuration

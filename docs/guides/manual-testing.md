@@ -36,10 +36,6 @@ cd C:\Users\NataJ\Documents\GitHub\personal\git-workspace-setup
 
 # Core
 . .\src\Core\ConfigurationLoader.ps1
-. .\src\Core\ProfileLoader.ps1
-. .\src\Core\WorkspaceLoader.ps1
-. .\src\Core\ConfigurationResolver.ps1
-
 ```
 
 ---
