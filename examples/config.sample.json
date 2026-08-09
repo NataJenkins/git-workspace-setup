@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0",
+
+  "settings": {
+    "execution": {
+      "dryRun": false,
+      "verbose": false
+    },
+    "installation": {
+      "backupExistingFiles": true,
+      "overwriteExistingFiles": false
+    }
+  },
+
+  "profiles": [
+    {
+      "name": "Personal",
+      "description": "Personal GitHub account",
+
+      "workspaces": ["~/Documents/GitHub/personal", "~/Documents/OpenSource"],
+
+      "git": {
+        "userName": "John Doe",
+        "email": "john@example.com",
+        "defaultBranch": "main"
+      },
+
+      "ssh": {
+        "host": "github-personal",
+        "keyFile": "id_ed25519_personal"
+      },
+
+      "hooks": {
+        "enabled": true
+      },
+
+      "vscode": {
+        "profile": "Personal",
+        "extensions": ["GitHub.copilot", "esbenp.prettier-vscode"]
+      }
+    },
+    {
+      "name": "Work",
+      "description": "Company repositories",
+
+      "workspaces": ["~/Documents/GitHub/work"],
+
+      "git": {
+        "userName": "John Doe",
+        "email": "john@company.com",
+        "defaultBranch": "develop"
+      },
+
+      "ssh": {
+        "host": "github-work",
+        "keyFile": "id_ed25519_work"
+      },
+
+      "hooks": {
+        "enabled": true
+      },
+
+      "vscode": {
+        "profile": "Work",
+        "extensions": []
+      }
+    }
+  ]
+}

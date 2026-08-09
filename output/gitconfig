@@ -1,0 +1,7 @@
+[user]
+    name = John Doe
+    email = john@example.com
+
+[init]
+    defaultBranch = main
+
