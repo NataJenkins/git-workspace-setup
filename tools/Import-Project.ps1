@@ -20,8 +20,9 @@ Write-Host "Loading project modules..."
 # Services
 . "$projectRoot/src/Services/FileService.ps1"
 . "$projectRoot/src/Services/JsonService.ps1"
-. "$projectRoot/src/Services/TemplateService.ps1"
+. "$projectRoot/src/Services/LoggerService.ps1"
 . "$projectRoot/src/Services/ProfileService.ps1"
+. "$projectRoot/src/Services/TemplateService.ps1"
 . "$projectRoot/src/Services/WorkspaceService.ps1"
 
 # Validators
@@ -30,7 +31,10 @@ Write-Host "Loading project modules..."
 . "$projectRoot/src/Validators/Test-Configuration.ps1"
 
 # Core
+. "$projectRoot/src/Core/ConfigurationResolver.ps1"
 . "$projectRoot/src/Core/ConfigurationLoader.ps1"
+. "$projectRoot/src/Core/ProfileLoader.ps1"
+. "$projectRoot/src/Core/WorkspaceLoader.ps1"
 
 # Bootstrappers
 . "$projectRoot/src/Bootstrappers/GitBootstrapper.ps1"
