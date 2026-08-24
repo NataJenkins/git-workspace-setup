@@ -9,6 +9,19 @@ console output across the application.
 
 Set-StrictMode -Version Latest
 
+function Format-LogMessage {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string]$Level,
+
+        [Parameter(Mandatory)]
+        [string]$Message
+    )
+
+    return "[$Level] $Message"
+}
+
 function Write-InfoLog {
     [CmdletBinding()]
     param(
@@ -16,7 +29,11 @@ function Write-InfoLog {
         [string]$Message
     )
 
-    Write-Host "[INFO] $Message"
+    $formattedMessage = Format-LogMessage `
+        -Level "INFO" `
+        -Message $Message
+
+    Write-Host $formattedMessage
 }
 
 function Write-WarningLog {
@@ -26,7 +43,11 @@ function Write-WarningLog {
         [string]$Message
     )
 
-    Write-Warning "[WARNING] $Message"
+    $formattedMessage = Format-LogMessage `
+        -Level "WARNING" `
+        -Message $Message
+
+    Write-Warning $formattedMessage
 }
 
 function Write-ErrorLog {
@@ -36,7 +57,11 @@ function Write-ErrorLog {
         [string]$Message
     )
 
-    Write-Error "[ERROR] $Message"
+    $formattedMessage = Format-LogMessage `
+        -Level "ERROR" `
+        -Message $Message
+
+    Write-Error $formattedMessage
 }
 
 function Write-DebugLog {
@@ -53,5 +78,9 @@ function Write-DebugLog {
         return
     }
 
-    Write-Host "[DEBUG] $Message"
+    $formattedMessage = Format-LogMessage `
+        -Level "DEBUG" `
+        -Message $Message
+
+    Write-Host $formattedMessage
 }
