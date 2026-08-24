@@ -21,7 +21,6 @@ The project is designed to be:
 - Safe by default
 - Configuration-driven
 - Open Source friendly
-- Configuration-driven installation
 
 ---
 
@@ -33,6 +32,7 @@ The project is designed to be:
 - Global Git Hooks
 - Interactive setup wizard
 - JSON configuration support
+- Centralized application logging
 
 ---
 
@@ -73,6 +73,7 @@ A complete configuration example is available at:
 - [Roadmap](ROADMAP.md)
 - [Development Conventions](docs/guides/development-conventions.md)
 - [Architecture](docs/architecture/README.md)
+- [Manual Testing Guide](docs/guides/manual-testing.md)
 
 ---
 
