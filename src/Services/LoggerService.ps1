@@ -43,8 +43,15 @@ function Write-DebugLog {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [string]$Message
+        [string]$Message,
+
+        [Parameter(Mandatory)]
+        [bool]$VerboseEnabled
     )
+
+    if (-not $VerboseEnabled) {
+        return
+    }
 
     Write-Host "[DEBUG] $Message"
 }
